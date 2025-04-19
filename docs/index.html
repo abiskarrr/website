@@ -217,4 +217,53 @@
         document.getElementById('days').textContent = days.toString().padStart(2, '0');
         document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
         document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = secon
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        
+        // Update progress bar (assuming 3 days total period)
+        const totalDuration = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+        const elapsed = totalDuration - difference;
+        const progress = Math.min(100, Math.floor((elapsed / totalDuration) * 100));
+        document.getElementById('progress').style.width = `${progress}%`;
+        
+        // Update every second (like a clock)
+        requestAnimationFrame(update);
+      }
+      
+      // Start the countdown immediately
+      update();
+    }
+    
+    // Random messages to display
+    function randomMessages() {
+      const messages = [
+        "Building something awesome...",
+        "Hang tight! We're almost there.",
+        "Making the final touches...",
+        "Brewing up something amazing!",
+        "Putting pieces together..."
+      ];
+      
+      const highlight = document.querySelector('.highlight');
+      let currentIndex = 0;
+      
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % messages.length;
+        highlight.textContent = messages[currentIndex];
+        highlight.style.opacity = 0;
+        
+        setTimeout(() => {
+          highlight.style.opacity = 1;
+          highlight.style.transition = 'opacity 0.5s ease';
+        }, 500);
+      }, 5000);
+    }
+    
+    // Initialize all animations
+    window.onload = function() {
+      animateTitle();
+      updateCountdown();
+      randomMessages();
+    };
+  </script>
+</body>
+</html>
