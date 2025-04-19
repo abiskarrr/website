@@ -191,11 +191,12 @@
       }, 100);
     }
     
-    // Countdown timer
+    // Countdown timer with a fixed launch date
     function updateCountdown() {
-      // Set launch date to 3 days from now
-      const launchDate = new Date();
-      launchDate.setDate(launchDate.getDate() + 3);
+      // *** IMPORTANT: SET THIS TO YOUR ACTUAL LAUNCH DATE ***
+      // This is set to 3 days from April 19, 2025 for demo purposes
+      // Format: Year, Month (0-11), Day, Hour, Minute, Second
+      const launchDate = new Date(2025, 3, 22, 12, 0, 0);
       
       function update() {
         const now = new Date();
@@ -219,13 +220,13 @@
         document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
         document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         
-        // Update progress bar (assuming 3 days total period)
+        // Calculate total duration (from when the countdown was set to when it ends)
         const totalDuration = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
         const elapsed = totalDuration - difference;
         const progress = Math.min(100, Math.floor((elapsed / totalDuration) * 100));
         document.getElementById('progress').style.width = `${progress}%`;
         
-        // Update every second (like a clock)
+        // Update every second
         requestAnimationFrame(update);
       }
       
