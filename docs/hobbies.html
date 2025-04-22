@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abiskar Dhakal | Hobbies</title>
+    <!-- Added proper font imports -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Circular:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* Font definitions improved */
         @font-face {
-    font-family: 'Spotify-like';
-    src: local('Gotham Medium'), local('Montserrat'), 
-       url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+            font-family: 'Spotify-like';
+            src: local('Circular'), local('Montserrat'),
+                url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
         }
+
         :root {
             --bg-primary: #ffffff;
             --bg-secondary: #f5f5f5;
@@ -17,6 +22,10 @@
             --text-secondary: #666666;
             --accent: #0066cc;
             --border: #dddddd;
+            --spotify-green: #1DB954;
+            --letterboxd-orange: #FF8000;
+            /* Added smooth transition duration for all elements */
+            --transition-speed: 0.3s;
         }
 
         .dark-mode {
@@ -32,11 +41,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -44,16 +53,16 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header - improved with subtle animation */
         header {
             background-color: var(--bg-secondary);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -69,6 +78,11 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -85,6 +99,7 @@
             color: var(--text-primary);
             font-weight: 500;
             position: relative;
+            padding-bottom: 3px;
         }
 
         .nav-links a:after {
@@ -95,14 +110,14 @@
             bottom: -5px;
             left: 0;
             background-color: var(--accent);
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover:after {
             width: 100%;
         }
 
-        /* Theme Toggle */
+        /* Theme Toggle - improved with better animation */
         .theme-toggle {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border);
@@ -114,13 +129,17 @@
             align-items: center;
             gap: 6px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+            outline: none;
         }
 
         .theme-toggle:hover {
             background-color: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        /* Hobbies Section */
+        /* Hobbies Section - improved animations */
         .page-title {
             text-align: center;
             margin: 3rem 0;
@@ -155,11 +174,21 @@
         .hobby-icon {
             font-size: 2.5rem;
             margin-right: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-section:hover .hobby-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .hobby-title {
             font-size: 2rem;
             color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-section:hover .hobby-title {
+            transform: translateX(5px);
         }
 
         .hobby-content {
@@ -167,9 +196,14 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
         }
 
-        /* Cinema Section */
+        .hobby-content:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Cinema Section - improved hover effects */
         .movie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -182,35 +216,35 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .movie-poster {
-    height: 250px;
-    overflow: hidden;
-}
+            height: 250px;
+            overflow: hidden;
+        }
 
-    .movie-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-.movie-card:hover .movie-poster img {
-    transform: scale(1.05);
-}
+        .movie-card:hover .movie-poster img {
+            transform: scale(1.05);
+        }
 
-/* This ensures all movie cards have consistent styling */
-.movie-placeholder, .movie-poster {
-    height: 310px;
-}
         .movie-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .movie-placeholder, .movie-poster {
+            height: 250px;
         }
 
         .movie-placeholder {
-            height: 250px;
             background-color: var(--border);
             display: flex;
             align-items: center;
@@ -224,6 +258,11 @@
 
         .movie-info h4 {
             margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .movie-card:hover .movie-info h4 {
+            color: var(--accent);
         }
 
         .movie-info p {
@@ -231,7 +270,7 @@
             color: var(--text-secondary);
         }
 
-        /* Music Section */
+        /* Music Section - improved styling */
         .music-content {
             display: flex;
             flex-direction: column;
@@ -241,8 +280,25 @@
         .album-row {
             display: flex;
             overflow-x: auto;
-            gap: 3.5rem;
-            padding-bottom: 1rem;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg-secondary);
+        }
+
+        .album-row::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .album-row::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 10px;
+        }
+
+        .album-row::-webkit-scrollbar-thumb {
+            background-color: var(--accent);
+            border-radius: 10px;
         }
 
         .album-card {
@@ -251,40 +307,33 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .album-cover {
-    height: 180px;
-    overflow: hidden;
-    }
-
-    .album-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    }
-
-.album-card:hover .album-cover img {
-    transform: scale(1.08);
-    }
-
-/* This ensures all album cards have consistent styling */
-    .album-placeholder, .album-cover {
-    height: 180px;
-    }
-        .album-card:hover {
-            transform: scale(1.05);
+            height: 180px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .album-placeholder {
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .album-card:hover .album-cover img {
+            transform: scale(1.08);
+        }
+
+        .album-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .album-placeholder, .album-cover {
             height: 180px;
-            background-color: var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
         }
 
         .album-info {
@@ -294,6 +343,11 @@
         .album-info h4 {
             margin-bottom: 0.3rem;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .album-card:hover .album-info h4 {
+            color: var(--accent);
         }
 
         .album-info p {
@@ -301,53 +355,84 @@
             color: var(--text-secondary);
         }
 
+        /* Added music genre styling */
+        .genre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .genre-tag {
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .genre-tag:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Social links - improved with platform-specific styling */
         .social-links {
-    display: flex;
-    justify-content: center; 
-    align-items: center;    
-    gap: 2rem;
-    margin: 3rem auto;     
-    max-width: 600px;       
-    padding: 1rem;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 600px;
+            padding: 1rem;
+        }
 
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.3s ease, color 0.3s ease;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            background-color: var(--bg-secondary);
+        }
 
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: transform 0.3s;
-}
+        .social-link.spotify {
+            border: 1px solid var(--spotify-green);
+        }
 
-        .social-link:hover {
+        .social-link.spotify:hover {
+            color: var(--spotify-green);
             transform: translateY(-5px);
-            color: var(--accent);
-        }
-        .social-icon {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.5rem;
+            background-color: rgba(29, 185, 84, 0.1);
         }
 
-        /* Social Media Icons */
-        .social-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 0.5rem;
+        .social-link.letterboxd {
+            border: 1px solid var(--letterboxd-orange);
         }
 
-        img.social-icon {
-        object-fit: center;
-        }
-        .social-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 0.5rem;
+        .social-link.letterboxd:hover {
+            color: var(--letterboxd-orange);
+            transform: translateY(-5px);
+            background-color: rgba(255, 128, 0, 0.1);
         }
 
-        /* Home Link */
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover .social-icon {
+            transform: rotate(10deg);
+        }
+
+        /* Home Link - improved styling */
         .home-link {
             display: flex;
             justify-content: center;
@@ -359,17 +444,31 @@
             color: var(--accent);
             display: flex;
             align-items: center;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background-color: var(--bg-secondary);
+            transition: all 0.3s ease;
         }
 
         .home-link a:hover {
-            text-decoration: underline;
+            transform: translateX(-5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
-        /* Footer */
+        /* Footer - improved styling */
         footer {
             background-color: var(--bg-secondary);
             padding: 2rem 0;
             text-align: center;
+            position: relative;
+        }
+
+        footer p {
+            transition: transform 0.3s ease;
+        }
+
+        footer:hover p {
+            transform: scale(1.02);
         }
 
         /* Animations */
@@ -396,16 +495,32 @@
             }
         }
 
-        /* Letterboxd Icon */
+        /* Added loading animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border) 50%, var(--bg-secondary) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Letterboxd Icon - improved svg rendering */
         .letterboxd-icon {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             background-color: var(--text-primary);
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.29,16.752V7.2H6.546V16.752ZM12.674,16.752V7.2H10.93V16.752ZM17.058,16.752V7.2H15.314V16.752ZM3.674,18.4A18.151,18.151,0,0,0,12,20.4a18.139,18.139,0,0,0,8.326-2ZM12,3.6a18.157,18.157,0,0,0-8.326,2.016A18.143,18.143,0,0,0,12,7.632a18.139,18.139,0,0,0,8.326-2.016A18.151,18.151,0,0,0,12,3.6'/%3E%3C/svg%3E") no-repeat center center;
             -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.29,16.752V7.2H6.546V16.752ZM12.674,16.752V7.2H10.93V16.752ZM17.058,16.752V7.2H15.314V16.752ZM3.674,18.4A18.151,18.151,0,0,0,12,20.4a18.139,18.139,0,0,0,8.326-2ZM12,3.6a18.157,18.157,0,0,0-8.326,2.016A18.143,18.143,0,0,0,12,7.632a18.139,18.139,0,0,0,8.326-2.016A18.151,18.151,0,0,0,12,3.6'/%3E%3C/svg%3E") no-repeat center center;
         }
 
-        /* Media Queries */
+        /* Media Queries - improved for better responsiveness */
         @media (max-width: 768px) {
             .movie-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -413,6 +528,34 @@
             
             .album-card {
                 min-width: 150px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hobby-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hobby-icon {
+                margin-bottom: 0.5rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 100%;
             }
         }
     </style>
@@ -439,6 +582,7 @@
 
     <main>
         <div class="container">
+            <h1 class="page-title">My Hobbies & Interests</h1>
             
             <div class="hobbies-container">
                 <!-- Cinema Section -->
@@ -454,7 +598,7 @@
                             <!-- Sample favorite movies -->
                             <div class="movie-card">
                                 <div class="movie-poster">
-                                    <img src="assets/img/swing.jpg" alt="The Godfather Poster">
+                                    <img src="assets/img/swing.jpg" alt="Swing Girls Poster">
                                 </div>
                                 <div class="movie-info">
                                     <h4>Swing Girls</h4>
@@ -463,7 +607,7 @@
                             </div>
                             <div class="movie-card">
                                 <div class="movie-poster">
-                                    <img src="assets/img/swing.jpg" alt="The Godfather Poster">
+                                    <img src="assets/img/swing.jpg" alt="Swing Girls Poster">
                                 </div>
                                 <div class="movie-info">
                                     <h4>Swing Girls</h4>
@@ -472,7 +616,7 @@
                             </div>
                             <div class="movie-card">
                                 <div class="movie-poster">
-                                    <img src="assets/img/swing.jpg" alt="The Godfather Poster">
+                                    <img src="assets/img/swing.jpg" alt="Swing Girls Poster">
                                 </div>
                                 <div class="movie-info">
                                     <h4>Swing Girls</h4>
@@ -481,7 +625,7 @@
                             </div>
                             <div class="movie-card">
                                 <div class="movie-poster">
-                                    <img src="assets/img/swing.jpg" alt="The Godfather Poster">
+                                    <img src="assets/img/swing.jpg" alt="Swing Girls Poster">
                                 </div>
                                 <div class="movie-info">
                                     <h4>Swing Girls</h4>
@@ -491,11 +635,12 @@
                         </div>
                     </div>
                 </div>
-                            <!-- Social Media Links -->
-                <div>
-                    <a href="https://boxd.it/42355" class="social-link" target="_blank">
-                            <img src="assets/img/letterboxd.png" alt="Letterbox logo" class="social-icon">
-                            <span>Letterboxd</span>
+                
+                <!-- Social Media Links - improved with platform specific styling -->
+                <div class="social-links">
+                    <a href="https://boxd.it/42355" class="social-link letterboxd" target="_blank">
+                        <img src="assets/img/letterboxd.png" alt="Letterboxd logo" class="social-icon">
+                        <span>Letterboxd</span>
                     </a>
                 </div>
                 
@@ -510,19 +655,19 @@
                         
                         <div class="music-content">
                             <h3>Favorite Albums</h3>
-                            <div class="album-row">
+                            <div class="album-row" id="album-carousel">
                                 <div class="album-card">
                                     <div class="album-cover">
-                                        <img src="assets/img/yeezus.jpeg" alt="Yeezus">
+                                        <img src="assets/img/graduation.jpg" alt="Yeezus">
                                     </div>
                                     <div class="album-info">
-                                        <h4>Yeezus</h4>
-                                        <p>Ye</p>
+                                        <h4>Graduation</h4>
+                                        <p>KanYE West</p>
                                     </div>
                                 </div>
                                 <div class="album-card">
                                     <div class="album-cover">
-                                        <img src="assets/img/currents.jpg" alt="New Morning Album Cover">
+                                        <img src="assets/img/currents.jpg" alt="Currents Album Cover">
                                     </div>
                                     <div class="album-info">
                                         <h4>Currents</h4>
@@ -547,23 +692,35 @@
                                         <p>Frank Ocean</p>
                                     </div>
                                 </div>
+                                                                <div class="album-card">
+                                    <div class="album-cover">
+                                        <img src="assets/img/bimbaakash.jpg" alt="Bimbaakash">
+                                    </div>
+                                    <div class="album-info">
+                                        <h4>Bimbaakash</h4>
+                                        <p>Bartika Eam Rai</p>
+                                    </div>
+                                </div>
                             </div>
                             
                             <h3>Genres I Enjoy</h3>
-                            <ul>
-                                <li>Alternative Rock</li>
-                                <li>Classical</li>
-                                <li>Jazz</li>
-                                <li>Electronic</li>
-                            </ul>
+                            <!-- Replaced bullet list with interactive tags -->
+                            <div class="genre-tags">
+                                <span class="genre-tag">Alternative Rock</span>
+                                <span class="genre-tag">Classical</span>
+                                <span class="genre-tag">Jazz</span>
+                                <span class="genre-tag">Electronic</span>
+                                <span class="genre-tag">Hip-Hop</span>
+                                <span class="genre-tag">Indie</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-                <!-- Spotify Link -->
-            <div>
-                <a href="https://open.spotify.com/user/31n3ctfmc3lhp4n4mlsysofm64mu?si=db228a0bb387481c" class="social-link" target="_blank">
+            <!-- Spotify Link - improved styling -->
+            <div class="social-links">
+                <a href="https://open.spotify.com/user/31n3ctfmc3lhp4n4mlsysofm64mu?si=db228a0bb387481c" class="social-link spotify" target="_blank">
                     <img src="assets/img/spotify.png" alt="Spotify" class="social-icon">
                     <span>Spotify</span>
                 </a>
@@ -583,7 +740,7 @@
     </footer>
 
     <script>
-        // Theme Toggle Functionality
+        // Theme Toggle Functionality - improved with smoother transitions
         const themeToggle = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
         const toggleIcon = document.querySelector('.toggle-icon');
@@ -613,8 +770,14 @@
             }
         }
         
-        // Handle theme toggle click
+        // Handle theme toggle click with animation
         themeToggle.addEventListener('click', () => {
+            // Add transition effect
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = 'none';
+            }, 300);
+            
             if (htmlElement.className === 'dark-mode') {
                 htmlElement.className = 'light-mode';
                 localStorage.setItem('theme', 'light-mode');
@@ -626,19 +789,19 @@
             }
         });
 
-        // Animation for hobby sections on scroll
+        // Animation for hobby sections on scroll - improved with better triggers
         const hobbySections = document.querySelectorAll('.hobby-section');
         
-        // Function to check if element is in viewport
+        // Function to check if element is in viewport with better margin
         function isInViewport(element) {
             const rect = element.getBoundingClientRect();
             return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
                 rect.bottom >= 0
             );
         }
         
-        // Function to handle scroll animation
+        // Function to handle scroll animation with smoother transitions
         function handleScrollAnimation() {
             hobbySections.forEach(section => {
                 if (isInViewport(section)) {
@@ -647,27 +810,415 @@
             });
         }
         
-        // Initial check on page load
-        window.addEventListener('load', handleScrollAnimation);
+        // Lazy load images with transition effects
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[data-src]');
+            images.forEach(img => {
+                if (isInViewport(img)) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    img.parentElement.classList.remove('loading');
+                }
+            });
+        }
         
-        // Check on scroll
-        window.addEventListener('scroll', handleScrollAnimation);
+        // Initial check on page load
+        window.addEventListener('load', () => {
+            handleScrollAnimation();
+            lazyLoadImages();
+        });
+        
+        // Check on scroll with debounce for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                handleScrollAnimation();
+                lazyLoadImages();
+            }, 10);
+        });
+        
+        // Secret navigation functionality
         document.addEventListener('keydown', function(event) {
-    // Secret key combination: Ctrl + Alt + H
-    if (event.ctrlKey && event.altKey && event.key === 'h') {
-        window.location.href = 'hobbies.html';
-    }
+            // Secret key combination: Ctrl + Alt + H
+            if (event.ctrlKey && event.altKey && event.key === 'h') {
+                // Add visual feedback before navigating
+                document.body.style.opacity = '0.5';
+                setTimeout(() => {
+                    window.location.href = 'hobbies.html';
+                }, 300);
+            }
+        });
+
+        // Enhanced footer click functionality with animation
+        const footer = document.querySelector('footer');
+        let footerClickCount = 0;
+        let footerClickTimer;
+        
+        if (footer) {
+    footer.addEventListener('click', function() {
+        // Clear timer if it exists
+        if (footerClickTimer) clearTimeout(footerClickTimer);
+        
+        // Reset counter after 2 seconds of inactivity
+        footerClickTimer = setTimeout(() => {
+            footerClickCount = 0;
+        }, 2000);
+        
+        // Increment counter and provide visual feedback
+        footerClickCount++;
+        footer.style.backgroundColor = 'var(--accent)';
+        setTimeout(() => {
+            footer.style.backgroundColor = 'var(--bg-secondary)';
+        }, 200);
+        
+        // Add counter indicator for better UX
+        if (footerClickCount > 0 && footerClickCount < 5) {
+            // Remove any existing counter elements
+            const existingCounter = document.querySelector('.click-counter');
+            if (existingCounter) existingCounter.remove();
+            
+            const feedback = document.createElement('div');
+            feedback.className = 'click-counter';
+            feedback.textContent = `${5 - footerClickCount} more`;
+            feedback.style.position = 'absolute';
+            feedback.style.top = '-20px';
+            feedback.style.left = '50%';
+            feedback.style.transform = 'translateX(-50%)';
+            feedback.style.fontSize = '0.75rem';
+            feedback.style.color = 'var(--text-secondary)';
+            feedback.style.backgroundColor = 'var(--bg-primary)';
+            feedback.style.padding = '3px 8px';
+            feedback.style.borderRadius = '10px';
+            feedback.style.opacity = '0.8';
+            
+            footer.style.position = 'relative';
+            footer.appendChild(feedback);
+            
+            // Fade out the counter
+            setTimeout(() => {
+                feedback.style.transition = 'opacity 0.5s ease';
+                feedback.style.opacity = '0';
+            }, 1000);
+        }
+        
+        // Trigger easter egg after 5 clicks
+        if (footerClickCount === 5) {
+            // Add transition effect before navigating
+            document.body.style.transition = 'opacity 0.3s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = 'hobbies.html';
+                footerClickCount = 0;
+            }, 300);
+        }
+    });
+}
+
+// Enhanced album carousel functionality
+const albumRow = document.getElementById('album-carousel');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+if (albumRow) {
+    // Mouse events for desktop drag scrolling
+    albumRow.addEventListener('mousedown', (e) => {
+        isDown = true;
+        albumRow.style.cursor = 'grabbing';
+        startX = e.pageX - albumRow.offsetLeft;
+        scrollLeft = albumRow.scrollLeft;
+        // Prevent default behavior to avoid text selection
+        e.preventDefault();
+    });
+    
+    albumRow.addEventListener('mouseleave', () => {
+        isDown = false;
+        albumRow.style.cursor = 'grab';
+    });
+    
+    albumRow.addEventListener('mouseup', () => {
+        isDown = false;
+        albumRow.style.cursor = 'grab';
+    });
+    
+    albumRow.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - albumRow.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed multiplier
+        albumRow.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Set initial cursor style
+    albumRow.style.cursor = 'grab';
+    
+    // Add arrow navigation for album carousel
+    const carousel = document.createElement('div');
+    carousel.className = 'carousel-controls';
+    carousel.style.display = 'flex';
+    carousel.style.justifyContent = 'center';
+    carousel.style.gap = '1rem';
+    carousel.style.marginTop = '1rem';
+    
+    // Left arrow
+    const leftArrow = document.createElement('button');
+    leftArrow.innerHTML = '←';
+    leftArrow.className = 'carousel-arrow';
+    leftArrow.style.background = 'var(--bg-primary)';
+    leftArrow.style.border = '1px solid var(--border)';
+    leftArrow.style.borderRadius = '50%';
+    leftArrow.style.width = '40px';
+    leftArrow.style.height = '40px';
+    leftArrow.style.cursor = 'pointer';
+    leftArrow.style.transition = 'all 0.2s ease';
+    
+    // Right arrow
+    const rightArrow = document.createElement('button');
+    rightArrow.innerHTML = '→';
+    rightArrow.className = 'carousel-arrow';
+    rightArrow.style.background = 'var(--bg-primary)';
+    rightArrow.style.border = '1px solid var(--border)';
+    rightArrow.style.borderRadius = '50%';
+    rightArrow.style.width = '40px';
+    rightArrow.style.height = '40px';
+    rightArrow.style.cursor = 'pointer';
+    rightArrow.style.transition = 'all 0.2s ease';
+    
+    // Hover effects
+    leftArrow.addEventListener('mouseover', () => {
+        leftArrow.style.background = 'var(--accent)';
+        leftArrow.style.color = '#fff';
+    });
+    
+    leftArrow.addEventListener('mouseout', () => {
+        leftArrow.style.background = 'var(--bg-primary)';
+        leftArrow.style.color = 'var(--text-primary)';
+    });
+    
+    rightArrow.addEventListener('mouseover', () => {
+        rightArrow.style.background = 'var(--accent)';
+        rightArrow.style.color = '#fff';
+    });
+    
+    rightArrow.addEventListener('mouseout', () => {
+        rightArrow.style.background = 'var(--bg-primary)';
+        rightArrow.style.color = 'var(--text-primary)';
+    });
+    
+    // Arrow click functionality
+    leftArrow.addEventListener('click', () => {
+        albumRow.scrollBy({
+            left: -200,
+            behavior: 'smooth'
+        });
+    });
+    
+    rightArrow.addEventListener('click', () => {
+        albumRow.scrollBy({
+            left: 200,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add arrows to controls
+    carousel.appendChild(leftArrow);
+    carousel.appendChild(rightArrow);
+    
+    // Add controls to DOM
+    albumRow.parentNode.insertBefore(carousel, albumRow.nextSibling);
+}
+
+// Add hover audio preview effect for albums
+const albumCards = document.querySelectorAll('.album-card');
+albumCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        // This could be connected to an actual music preview API in a real implementation
+        // For now we'll just add a visual effect
+        const albumCover = card.querySelector('.album-cover');
+        const audioIndicator = document.createElement('div');
+        audioIndicator.className = 'audio-indicator';
+        audioIndicator.innerHTML = '♪';
+        audioIndicator.style.position = 'absolute';
+        audioIndicator.style.bottom = '10px';
+        audioIndicator.style.right = '10px';
+        audioIndicator.style.background = 'var(--accent)';
+        audioIndicator.style.color = '#fff';
+        audioIndicator.style.width = '30px';
+        audioIndicator.style.height = '30px';
+        audioIndicator.style.borderRadius = '50%';
+        audioIndicator.style.display = 'flex';
+        audioIndicator.style.alignItems = 'center';
+        audioIndicator.style.justifyContent = 'center';
+        audioIndicator.style.fontSize = '16px';
+        audioIndicator.style.opacity = '0';
+        audioIndicator.style.transition = 'opacity 0.3s ease';
+        
+        if (albumCover && !albumCover.querySelector('.audio-indicator')) {
+            albumCover.style.position = 'relative';
+            albumCover.appendChild(audioIndicator);
+            
+            // Fade in the indicator
+            setTimeout(() => {
+                audioIndicator.style.opacity = '0.9';
+            }, 50);
+        }
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        const audioIndicator = card.querySelector('.audio-indicator');
+        if (audioIndicator) {
+            audioIndicator.style.opacity = '0';
+            // Remove element after animation
+            setTimeout(() => {
+                audioIndicator.remove();
+            }, 300);
+        }
+    });
 });
 
-// Also add access through footer click (5 times)
-const footer = document.querySelector('footer');
-let footerClickCount = 0;
-if (footer) {
-    footer.addEventListener('click', function() {
-        footerClickCount++;
-        if (footerClickCount === 5) {
-            window.location.href = 'hobbies.html';
-            footerClickCount = 0;
+// Add dynamic movie rating system
+const movieCards = document.querySelectorAll('.movie-card');
+movieCards.forEach(card => {
+    const movieInfo = card.querySelector('.movie-info');
+    
+    // Create rating container
+    const ratingContainer = document.createElement('div');
+    ratingContainer.className = 'rating-container';
+    ratingContainer.style.display = 'flex';
+    ratingContainer.style.alignItems = 'center';
+    ratingContainer.style.marginTop = '8px';
+    
+    // Create star rating (out of 5)
+    const rating = Math.floor(Math.random() * 5) + 1; // Random rating for demo
+    
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('span');
+        star.className = 'rating-star';
+        star.textContent = i <= rating ? '★' : '☆';
+        star.style.color = i <= rating ? 'gold' : 'var(--text-secondary)';
+        star.style.fontSize = '14px';
+        star.style.cursor = 'pointer';
+        star.style.transition = 'transform 0.2s ease';
+        
+        // Add hover effect
+        star.addEventListener('mouseover', () => {
+            star.style.transform = 'scale(1.2)';
+        });
+        
+        star.addEventListener('mouseout', () => {
+            star.style.transform = 'scale(1)';
+        });
+        
+        // Add click functionality
+        star.addEventListener('click', () => {
+            // Update all stars based on this selection
+            const stars = ratingContainer.querySelectorAll('.rating-star');
+            stars.forEach((s, index) => {
+                s.textContent = index < i ? '★' : '☆';
+                s.style.color = index < i ? 'gold' : 'var(--text-secondary)';
+            });
+            
+            // Add visual feedback
+            const feedback = document.createElement('div');
+            feedback.textContent = 'Rating saved!';
+            feedback.style.position = 'absolute';
+            feedback.style.bottom = '5px';
+            feedback.style.right = '5px';
+            feedback.style.fontSize = '12px';
+            feedback.style.color = 'var(--accent)';
+            feedback.style.opacity = '0';
+            feedback.style.transition = 'opacity 0.3s ease';
+            
+            card.style.position = 'relative';
+            card.appendChild(feedback);
+            
+            // Fade in and out
+            setTimeout(() => {
+                feedback.style.opacity = '1';
+                setTimeout(() => {
+                    feedback.style.opacity = '0';
+                    setTimeout(() => {
+                        feedback.remove();
+                    }, 300);
+                }, 1000);
+            }, 50);
+        });
+        
+        ratingContainer.appendChild(star);
+    }
+    
+    // Add to movie info
+    movieInfo.appendChild(ratingContainer);
+});
+
+// Add font-specific styling for Spotify and Letterboxd sections
+const spotifyLink = document.querySelector('.social-link.spotify span');
+const letterboxdLink = document.querySelector('.social-link.letterboxd span');
+
+// Apply Spotify font styling
+if (spotifyLink) {
+    spotifyLink.style.fontFamily = 'Circular, Spotify-like, Montserrat, sans-serif';
+    spotifyLink.style.fontWeight = '500';
+    spotifyLink.style.letterSpacing = '0.5px';
+}
+
+// Apply Letterboxd font styling
+if (letterboxdLink) {
+    letterboxdLink.style.fontFamily = 'Graphik, Montserrat, sans-serif';
+    letterboxdLink.style.fontWeight = '500';
+    letterboxdLink.style.letterSpacing = '0.5px';
+}
+
+// Add a simple page load animation
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// Add custom cursor for interactive elements (optional enhancement)
+const customCursor = document.createElement('div');
+customCursor.className = 'custom-cursor';
+customCursor.style.position = 'fixed';
+customCursor.style.width = '20px';
+customCursor.style.height = '20px';
+customCursor.style.borderRadius = '50%';
+customCursor.style.backgroundColor = 'var(--accent)';
+customCursor.style.opacity = '0.3';
+customCursor.style.pointerEvents = 'none';
+customCursor.style.zIndex = '9999';
+customCursor.style.transform = 'translate(-50%, -50%)';
+customCursor.style.transition = 'transform 0.1s ease, opacity 0.2s ease';
+customCursor.style.display = 'none';
+
+document.body.appendChild(customCursor);
+
+// Only show custom cursor on devices that likely use a mouse
+if (!('ontouchstart' in window)) {
+    const interactiveElements = document.querySelectorAll('a, button, .movie-card, .album-card, .genre-tag');
+    
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            customCursor.style.display = 'block';
+            customCursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            customCursor.style.opacity = '0.4';
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            customCursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            customCursor.style.opacity = '0.3';
+            customCursor.style.display = 'none';
+        });
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+        if (customCursor.style.display === 'block') {
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
         }
     });
 }
