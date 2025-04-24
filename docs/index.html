@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abiskar Dhakal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Circular:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Spotify-like';
+            src: local('Circular'), local('Montserrat'),
+                url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        }
+
         :root {
             --bg-primary: #ffffff;
             --bg-secondary: #f5f5f5;
@@ -12,6 +20,9 @@
             --text-secondary: #666666;
             --accent: #0066cc;
             --border: #dddddd;
+            --spotify-green: #1DB954;
+            --letterboxd-orange: #FF8000;
+            --transition-speed: 0.3s;
         }
 
         .dark-mode {
@@ -27,14 +38,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -47,7 +59,7 @@
         header {
             background-color: var(--bg-secondary);
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -63,6 +75,11 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -108,10 +125,14 @@
             align-items: center;
             gap: 6px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+            outline: none;
         }
 
         .theme-toggle:hover {
             background-color: var(--bg-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         /* Hero Section */
@@ -120,6 +141,16 @@
             align-items: center;
             padding: 5rem 0;
             min-height: calc(100vh - 72px);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-content {
@@ -135,7 +166,12 @@
         .hero-image img {
             max-width: 30%;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
         }
 
         .hero h1 {
@@ -159,7 +195,7 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: 500;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn:hover {
@@ -171,6 +207,21 @@
         section {
             padding: 5rem 0;
             border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Make hero section visible by default */
+        section.hero {
+            opacity: 1;
+            transform: none;
         }
 
         section h2 {
@@ -233,10 +284,11 @@
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            padding: 20px 40px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            transition: transform 0.3s ease;
         }
 
         .timeline-item:nth-child(odd) {
@@ -261,6 +313,10 @@
 
         .timeline-item:nth-child(even):after {
             left: -8px;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
         }
 
         .timeline-content {
@@ -467,7 +523,6 @@
                     <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
-
                 </ul>
                 <button class="theme-toggle" id="theme-toggle">
                     <span class="toggle-icon">🌙</span>
@@ -708,6 +763,23 @@
     alert('Failed to send message. Please try again later or email me directly.');
   }
 });
+
+        // Add this section visibility code
+        // Intersection Observer for fade-in sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
