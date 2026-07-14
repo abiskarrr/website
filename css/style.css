@@ -451,6 +451,32 @@ footer {
     font-size: 1.5rem;
     color: var(--foreground);
   }
+  
+  .media-grid {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .media-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .media-grid::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+  }
+  .media-grid .media-card {
+    width: 160px;
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .media-row .media-card {
+    width: 160px;
+    min-width: 160px;
+  }
 }
 
 /* Media Sections (Hobbies) */
